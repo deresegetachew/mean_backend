@@ -3,7 +3,7 @@ const V1 = require('./V1/router');
 
 function Router(app) {
     let appRouter = express.Router()
-    let v1Router = express.Router();
+    let v1Router = express.Router({ mergeParams: true });
 
     app.use('/', appRouter); //locahost:3000
     appRouter.use('/api', v1Router); //localhost:3000/api
