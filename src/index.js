@@ -5,7 +5,7 @@ const AppRouter = require('./router');
 async function init() {
     const app = webServer.configWebServer();
     AppRouter.DefineRoutes(app);
-    dbConfig.connectToDb();
+    await dbConfig.connectToDb();
     //configDb()
 }
 
