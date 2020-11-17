@@ -11,3 +11,5 @@ router.use('/product', productRoute.router);
 //router.use('/product', productRoute.router);
 
 module.exports = { router }
+
+//localhost:3000/api/V1/product/edit
