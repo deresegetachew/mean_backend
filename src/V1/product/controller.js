@@ -1,3 +1,4 @@
+const product = require('./model');
 getProducts = (req, res, next) => {
     res.send("getProductsFromCOntroller");
 }
