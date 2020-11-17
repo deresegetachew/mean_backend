@@ -3,7 +3,9 @@ getProducts = (req, res, next) => {
     res.send("getProductsFromCOntroller");
 }
 
-createProducts = (req, res, next) => {
+createProducts = async (req, res, next) => {
+
+    let newProduct = await product.productModel.create({ name: 'sanitizer', count: 1 });
     res.send("createProducts");
 }
 
