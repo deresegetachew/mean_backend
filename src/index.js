@@ -3,7 +3,7 @@ const AppRouter = require('./router');
 
 async function init() {
     const app = webServer.configWebServer();
-    AppRouter.Router(app);
+    AppRouter.DefineRoutes(app);
     //configDb()
 }
 
