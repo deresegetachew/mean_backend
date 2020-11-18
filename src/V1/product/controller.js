@@ -11,7 +11,7 @@ createProducts = async (req, res, next) => {
     let newProduct = await productModel.create({ name: name, count: count });
     //let newProduct = await productModel.create({ name, count });
 
-    res.send("createProducts");
+    res.status(201).send(newProduct.toObject());
 }
 
 
