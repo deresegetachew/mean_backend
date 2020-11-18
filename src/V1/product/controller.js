@@ -6,8 +6,17 @@ const { productModel } = require('./model');
 
 getProducts = async (req, res, next) => {
     console.log(req.query);
-    let allProducts = await productModel.find({})
-    res.send(allProducts);
+
+    let pageNumber = +req.query.pageNumber;
+    let limit = +req.query.limit;
+
+    let skip = pageNumber > 0 ? ((pageNumber - 1) * limit) : 0;
+
+    let products = await productModel.find({}).skip(skip).limit(limit);
+    let totalCount = await productModel.find({}).count();
+
+
+    res.send({ data: products, totalPage: Math.ceil(totalCount / limit), limit });
 }
 
 
