@@ -44,5 +44,18 @@ createProducts = async (req, res, next) => {
     res.status(201).send(newProduct.toObject());
 }
 
+//router.parameter id 
+//body {name: ''}
+//return the new updated product
+updateProduct = async (req, res, next) => {
+
+}
+
+// routerparmaeter id
+//find by the id and delete
+deleteProduct = async (req, res, next) => {
+
+}
+
 
 module.exports = { getProducts, createProducts, getProductByName, getProductById };
