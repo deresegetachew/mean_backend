@@ -5,6 +5,6 @@ const schema = new mongoose.Schema({
     count: 'number'
 });
 
-const productModel = mongoose.model('Product', schema);
-
+const productModel = mongoose.model('product', schema);
 module.exports = { productModel };
+
