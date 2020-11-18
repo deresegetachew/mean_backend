@@ -6,9 +6,11 @@ getProducts = async (req, res, next) => {
 }
 
 createProducts = async (req, res, next) => {
-    console.log(req.body);
+    const { name, count } = req.body;
 
-    let newProduct = await productModel.create({ name: 'sanitizer', count: 1 });
+    let newProduct = await productModel.create({ name: name, count: count });
+    //let newProduct = await productModel.create({ name, count });
+
     res.send("createProducts");
 }
 

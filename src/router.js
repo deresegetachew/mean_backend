@@ -11,7 +11,6 @@ function DefineRoutes(app) {
     //allows us to accept json payload in the body, only looks at requests where Content-Type is json
     app.use(express.json({ type: 'application/json' })); //uses body-parser
 
-
     app.use('/', appRouter); //localhost:3000
     appRouter.use('/api', v1Router); //localhost:3000/api
     v1Router.use('/V1', V1.router); //localhost:3000/api/V1/
