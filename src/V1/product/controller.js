@@ -48,14 +48,32 @@ createProducts = async (req, res, next) => {
 //body {name: ''}
 //return the new updated product
 updateProduct = async (req, res, next) => {
+    const { id } = req.params;
+    const { name, count } = req.body;
 
+    let { nModified } = await productModel.updateOne(
+        { _id: mongoose.Types.ObjectId(id) },
+        { name, count }, { new: true, returnOriginal: false }).exec();
+    if (nModified > 0) {
+        let updatedProduct = await productModel.findById(mongoose.Types.ObjectId(id)).exec();
+        res.status(204).send(updatedProduct)
+    }
+    res.status(200).send("no product was updated");
 }
 
 // routerparmaeter id
 //find by the id and delete
 deleteProduct = async (req, res, next) => {
+    let { id } = req.params;
+
+    let { deletedCount } = await productModel.deleteOne({ "_id": mongoose.Types.ObjectId(id) }).exec();
+
+    if (deletedCount > 0)
+        res.status(200).send("product deleted");
+    else
+        res.status(500).send("Error deleting product");
 
 }
 
 
-module.exports = { getProducts, createProducts, getProductByName, getProductById };
+module.exports = { getProducts, createProducts, getProductByName, getProductById, updateProduct, deleteProduct };

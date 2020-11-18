@@ -11,6 +11,8 @@ router.get('/', (req, res, next) => { productController.getProducts(req, res, ne
 router.get('/:name', getProductByName)
 router.get('/byid/:id', getProductById)
 router.post('/', productController.createProducts)
+router.put('/:id', productController.updateProduct)
+router.delete('/:id', productController.deleteProduct)
 
 
 module.exports = { router };
